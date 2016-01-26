@@ -2,22 +2,42 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import urllib2
 
-#Stockholm
-#myUrl = "https://87.60.87.90"
-#Finland
-#myUrl = "https://194.111.72.47"
-#test
-myUrl = "https://www.ebay.com"
-driver = webdriver.Firefox()
-#driver = webdriver.PhantomJS()
-driver.get(myUrl)
-#elem = driver.find_element_by_name("login")
-#elem.send_keys("copro@mechin.org")
+from loginFunctions import seleniumFF, seleniumPH
 
-#elem = driver.find_element_by_name("pwd")
-#elem.send_keys("azerty")
+def checkPolycomHDX(IP="", loginSan="", passwordSan=""):
 
-#elem.submit()
+    myIP = IP
 
-driver.close()
+    myUrl = "https://" + myIP
+    ##URL for http auth logging - specific to HDX codecs
+    authUrl = "https://" + loginSan + ":" + passwordSan + "@" + myIP + "/a_oobweblanguage.htm"
+
+    dicTmp = {}
+
+    try:
+        testWeb = urllib2.urlopen(myUrl, timeout = 5)
+        dicTmp["ip"] = "ok"
+    except:
+        testWeb = None
+        dicTmp["ip"] = "unreachable"
+
+    #test2 = urllib.urlopen(urlNone)
+    if testWeb:
+        print testWeb.getcode()
+        #IP_fetched = seleniumFF(url=myUrl, loginUrl=authUrl, login=loginSan, password=passwordSan)
+        IP_fetched = seleniumPH(url=myUrl, loginUrl=authUrl, login=loginSan, password=passwordSan)
+        if IP_fetched == myIP:
+            print "same IP : ", IP_fetched, myIP
+            dicTmp["https"] = "ok"
+        else:
+            print "different IP : ", IP_fetched, myIP
+            dicTmp["https"] = "auth failed"
+    else:
+        print "no actions as IP is unreachable"
+        dicTmp["https"] = "unreachable"
+
+    return dicTmp
+
+#checkPolycomHDX("X.X.X.X")
