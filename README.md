@@ -1,2 +1,2 @@
 # automation
-testing selenium
+testing selenium & Phantomjs for automatic logins
