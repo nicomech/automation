@@ -7,7 +7,7 @@ from loginTest import checkPolycomHDX
 import datetime
 
 ##define xls path
-wb = load_workbook(filename="source/codecList.xlsx")
+wb = load_workbook(filename="../source/codecList.xlsx")
 tab = wb["Sheet1"]
 
 ##check number of rows to review in Excel file. No blank row in between expected
