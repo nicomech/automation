@@ -28,11 +28,11 @@ def checkPolycomHDX(IP="", loginSan="admin", passwordSan="l3sup11%3F"):
         print testWeb.getcode()
         #IP_fetched = seleniumFF(url=myUrl, loginUrl=authUrl, login=loginSan, password=passwordSan)
         IP_fetched = seleniumPH(url=myUrl, loginUrl=authUrl, login=loginSan, password=passwordSan)
-        if IP_fetched == myIP:
-            print "same IP : ", IP_fetched, myIP
+        if IP_fetched:
+            print "login ok on IP : ", IP_fetched
             dicTmp["https"] = "ok"
         else:
-            print "different IP : ", IP_fetched, myIP
+            print "login ko on IP : ", IP_fetched, myIP
             dicTmp["https"] = "auth failed"
     else:
         print "no actions as IP is unreachable"
