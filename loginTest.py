@@ -6,7 +6,7 @@ import urllib2
 
 from loginFunctions import seleniumFF, seleniumPH
 
-def checkPolycomHDX(IP="", loginSan="admin", passwordSan="l3sup11%3F"):
+def checkPolycomHDX(IP="", loginSan="", passwordSan=""):
 
     myIP = IP
 
