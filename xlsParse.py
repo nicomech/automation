@@ -41,7 +41,7 @@ while i < totalRowTab:
     tab[cellTiming] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     i = i + 1
 
-fileToSave = "../source/codecSanofi-" + str(datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S")) + ".xlsx"
+fileToSave = "../source/codecResult-" + str(datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S")) + ".xlsx"
 
-#wb.save("source/codecSanofi.xlsx")
+#wb.save("source/codecResult.xlsx")
 wb.save(fileToSave)
