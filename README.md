@@ -1,3 +1,5 @@
 # automation
 testing selenium & Phantomjs for automatic browser logins
-Application on login to Polycom HDX codecs
+
+
+This app allows for automatic login to Polycom HDX endpoints, check login credentials & grab Serial Number.
